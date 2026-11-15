@@ -1,0 +1,6 @@
+# ThreeRT engine checkout (cloned by `npm run setup`)
+engine/
+node_modules/
+out/
+# Large test models: keep local unless you decide otherwise
+test-models/*.glb

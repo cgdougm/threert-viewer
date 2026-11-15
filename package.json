@@ -1,0 +1,15 @@
+{
+  "name": "threert-viewer",
+  "private": true,
+  "type": "module",
+  "description": "Test drive of ThreeRT (https://github.com/meshy-dev/ThreeRT): scenes in scenes/, viewed in three.js or path-traced by the engine.",
+  "scripts": {
+    "setup": "node tools/setup.ts",
+    "view": "node tools/view.ts",
+    "bundle": "node tools/bundle.ts",
+    "render": "node tools/rt.ts render",
+    "play": "node tools/rt.ts play",
+    "build:renderer": "cd engine/renderer && cargo build --release",
+    "typecheck": "node engine/node_modules/typescript/bin/tsc -p ."
+  }
+}
