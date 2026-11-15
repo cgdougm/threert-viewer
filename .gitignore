@@ -4,3 +4,5 @@ node_modules/
 out/
 # Large test models: keep local unless you decide otherwise
 test-models/*.glb
+# Engine asset store (engine/assets links here)
+threert-assets/

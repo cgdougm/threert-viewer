@@ -1,0 +1,18 @@
+diff --git a/scripts/orca.ts b/scripts/orca.ts
+index 8644ff9..d0bde04 100644
+--- a/scripts/orca.ts
++++ b/scripts/orca.ts
+@@ -67,11 +67,11 @@ if (!bl) {
+ 
+ const cache = join(store, ".cache");
+ const venv = join(cache, "orca-venv");
+-const py = join(venv, "bin", "python");
++const py = process.platform === "win32" ? join(venv, "Scripts", "python.exe") : join(venv, "bin", "python");
+ if (!existsSync(py)) {
+   console.log(`making ${venv} (Pillow, numpy)`);
+   mkdirSync(cache, { recursive: true });
+-  await $`python3 -m venv ${venv}`;
++  await $`${process.platform === "win32" ? "python" : "python3"} -m venv ${venv}`;
+   await $`${py} -m pip install --quiet --disable-pip-version-check pillow==11.3.0 numpy`;
+ }
+ 

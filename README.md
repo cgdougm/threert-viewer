@@ -32,3 +32,4 @@ npm run build:renderer   # cargo build --release in engine/renderer (slow the fi
 
 - Lighting is in physical units: the sun is about 80,000 lux. Set `camera.setManualExposure(~14.6)` for daylight, or the three.js view shows white.
 - The test car (Abarth 595SS "Death Stranding Chiral" by chiwei, CC-BY-4.0 via Sketchfab) is exported at about 1/13 scale, so `scenes/abarth.ts` scales it ×13.
+- `scenes/motorhome.ts`: "FREE GMC Motorhome reimagined low poly" by Karol Miklas (CC-BY-4.0 via Sketchfab), parked at golden hour. It's at real scale as shipped and only needs lifting 1.56 m so the wheels sit on the ground.

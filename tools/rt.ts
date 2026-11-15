@@ -3,7 +3,7 @@
 //   node tools/rt.ts render scenes/abarth.ts [--spp 64]      -> out/<id>.png
 import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync } from "node:fs";
-import { join } from "node:path";
+import { join, relative, resolve } from "node:path";
 import { bundle } from "./bundle.ts";
 import { engineRoot, projectRoot, sceneId } from "./paths.ts";
 
@@ -16,7 +16,9 @@ const exe = join(engineRoot, "renderer/target/release", process.platform === "wi
 if (!existsSync(exe)) (console.error(`no renderer at ${exe}\nbuild it first: npm run build:renderer`), process.exit(1));
 
 const out = await bundle(src);
-const args = [mode, out, "--assets", projectRoot, ...rest];
+// Asset URIs resolve against one root: engine/ for the engine's own scenes (assets/...), this project otherwise.
+const inEngine = !relative(engineRoot, resolve(src)).startsWith("..");
+const args = [mode, out, "--assets", inEngine ? engineRoot : projectRoot, ...rest];
 if (mode === "render" && !rest.includes("-o")) {
   mkdirSync(join(projectRoot, "out"), { recursive: true });
   args.push("-o", join(projectRoot, "out", `${sceneId(src)}.png`));
