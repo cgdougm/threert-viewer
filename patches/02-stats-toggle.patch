@@ -1,8 +1,8 @@
 diff --git a/renderer/src/view.rs b/renderer/src/view.rs
-index ec0cac9..a4836f4 100644
+index 12d5be9..67c71ae 100644
 --- a/renderer/src/view.rs
 +++ b/renderer/src/view.rs
-@@ -103,6 +103,8 @@ struct State {
+@@ -118,6 +118,8 @@ struct State {
      status: String,
      frames: u32,
      stats_t: Instant,
@@ -11,7 +11,7 @@ index ec0cac9..a4836f4 100644
      fps: f32,
      last: Instant,
      snapshot: Option<PathBuf>,
-@@ -272,6 +274,7 @@ impl App {
+@@ -283,6 +285,7 @@ impl App {
              status: String::new(),
              frames: 0,
              stats_t: Instant::now(),
@@ -19,7 +19,7 @@ index ec0cac9..a4836f4 100644
              fps: 0.0,
              last: Instant::now(),
              snapshot: None,
-@@ -445,6 +448,7 @@ impl ApplicationHandler for App {
+@@ -448,6 +451,7 @@ impl ApplicationHandler for App {
                              "1" | "2" | "4" | "8" => s.spp_cap = name.parse().unwrap(),
                              // F1..F6 style view modes on the number row with Alt held
                              "V" => s.core.view_mode = (s.core.view_mode + 1) % 6,
@@ -27,7 +27,7 @@ index ec0cac9..a4836f4 100644
                              _ => {}
                          }
                          emit(serde_json::json!({ "type": "key", "key": name }));
-@@ -669,7 +673,9 @@ fn frame(s: &mut State, cmds: &mpsc::Receiver<Cmd>, services: &mut dyn HostServi
+@@ -743,7 +747,9 @@ fn frame(s: &mut State, cmds: &mpsc::Receiver<Cmd>, services: &mut dyn HostServi
          st["type"] = "stats".into();
          st["fps"] = s.fps.into();
          st["spp"] = s.spp.into();

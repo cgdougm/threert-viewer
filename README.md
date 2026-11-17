@@ -25,7 +25,7 @@ npm run build:renderer   # cargo build --release in engine/renderer (slow the fi
 - `test-models/`: local GLBs (gitignored). Scenes reference them by project-relative URI: `new GLTFModel("test-models/foo.glb")`.
 - `tools/`: thin wrappers around the engine's own tooling (`view.ts`, `bundle.ts`, `rt.ts`, `setup.ts`).
 - `engine/`: the ThreeRT checkout (gitignored). `@threert/*` resolve to its workspace packages, not to npm.
-- `patches/`: local fixes to the engine, applied by `npm run setup`. `01-windows-window-resize.patch` stops the `play` window from erroring every frame after you drag it to a monitor with a different scale. `02-stats-toggle.patch` lets `npm run play` keep the twice-a-second stats line quiet; press **I** in the window to toggle it.
+- `patches/`: local fixes to the engine, applied by `npm run setup`. `02-stats-toggle.patch` lets `npm run play` keep the twice-a-second stats line quiet; press **I** in the window to toggle it. `03-windows-orca-venv.patch` lets `scripts/orca.ts` find its Python on Windows. (Patch 01, a fix for the `play` window on monitors with different scales, was dropped after upstream fixed it in [#132](https://github.com/meshy-dev/ThreeRT/pull/132).)
 - `out/`: bundles and renders (gitignored).
 
 ## Notes
