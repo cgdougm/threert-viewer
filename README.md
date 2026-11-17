@@ -8,7 +8,7 @@ ThreeRT's official `threert` CLI ships only with the macOS app. On Windows, this
 |---|---|---|
 | three.js preview | The scene as plain three.js in the browser. F5 rebundles. | `npm run view -- scenes/abarth.ts` |
 | Path tracer, window | `threert-render play` (Rust/wgpu, hardware ray queries on Vulkan/DX12). Drag to orbit, right-drag to pan, wheel to zoom, WASD/QE to fly, R to reset, P for a snapshot, I to toggle the stats line. | `npm run play -- scenes/abarth.ts` |
-| Path tracer, still | `threert-render render` → `out/<scene>.png` | `npm run render -- scenes/abarth.ts --spp 64` |
+| Path tracer, still | `threert-render render` → `out/<scene>.png` (`out/engine-<scene>.png` for engine scenes) | `npm run render -- scenes/abarth.ts --spp 64` |
 
 ## Setup
 
