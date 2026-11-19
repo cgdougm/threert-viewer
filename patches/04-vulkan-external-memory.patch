@@ -1,0 +1,14 @@
+diff --git a/renderer/src/gpu.rs b/renderer/src/gpu.rs
+index 75e8820..edfe6f6 100644
+--- a/renderer/src/gpu.rs
++++ b/renderer/src/gpu.rs
+@@ -1877,6 +1877,9 @@ impl Gpu {
+         if timestamps {
+             features |= wgpu::Features::TIMESTAMP_QUERY;
+         }
++        // A host may share its frames' textures with another API (a D3D11 texture imported into Vulkan,
++        // `texture_from_d3d11_shared_handle`); costs nothing when unused.
++        features |= adapter.features() & wgpu::Features::VULKAN_EXTERNAL_MEMORY_WIN32;
+         // Compiled pipelines kept between runs, where a host gave a directory and the backend has a cache.
+         let cache_feature = options.pipeline_cache.as_ref().and_then(|_| crate::pipeline_cache::PipelineCache::feature(&adapter, &adapter_info));
+         features |= cache_feature.unwrap_or(wgpu::Features::empty());

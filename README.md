@@ -25,7 +25,7 @@ npm run build:renderer   # cargo build --release in engine/renderer (slow the fi
 - `test-models/`: local GLBs (gitignored). Scenes reference them by project-relative URI: `new GLTFModel("test-models/foo.glb")`.
 - `tools/`: thin wrappers around the engine's own tooling (`view.ts`, `bundle.ts`, `rt.ts`, `setup.ts`).
 - `engine/`: the ThreeRT checkout (gitignored). `@threert/*` resolve to its workspace packages, not to npm.
-- `patches/`: local fixes to the engine, applied by `npm run setup`. `02-stats-toggle.patch` lets `npm run play` keep the twice-a-second stats line quiet; press **I** in the window to toggle it. `03-windows-orca-venv.patch` lets `scripts/orca.ts` find its Python on Windows. (Patch 01, a fix for the `play` window on monitors with different scales, was dropped after upstream fixed it in [#132](https://github.com/meshy-dev/ThreeRT/pull/132).)
+- `patches/`: local fixes to the engine, applied by `npm run setup`. `02-stats-toggle.patch` lets `npm run play` keep the twice-a-second stats line quiet; press **I** in the window to toggle it. `03-windows-orca-venv.patch` lets `scripts/orca.ts` find its Python on Windows. `04-vulkan-external-memory.patch` turns on wgpu's `VULKAN_EXTERNAL_MEMORY_WIN32` on the renderer's device when the GPU has it, so a host app can import a D3D11 texture into it (gpui-sandbox's zero-copy view). (Patch 01, a fix for the `play` window on monitors with different scales, was dropped after upstream fixed it in [#132](https://github.com/meshy-dev/ThreeRT/pull/132).)
 - `out/`: bundles and renders (gitignored).
 
 ## Notes
