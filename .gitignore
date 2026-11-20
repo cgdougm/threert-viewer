@@ -6,3 +6,5 @@ out/
 test-models/*.glb
 # Engine asset store (engine/assets links here)
 threert-assets/
+# Local scratch (models, downloads)
+.local/
