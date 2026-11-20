@@ -2,6 +2,10 @@
 
 A quick test drive of [ThreeRT](https://github.com/meshy-dev/ThreeRT), a real-time path tracer with a three.js-style scene API.
 
+![control-panel-cornell in the live path tracer: a Cornell box whose two boxes are covered in glowing switches, meters and screens](images/cornellbox-controls.1.png)
+
+*`scenes/control-panel-cornell.ts` in `npm run play`: the Cornell box with procedural gadgets, lit mostly by their own glow.*
+
 ThreeRT's official `threert` CLI ships only with the macOS app. On Windows, this project drives the engine from source:
 
 | | What | Command |
